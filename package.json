@@ -1,0 +1,53 @@
+{
+	"name": "angular-challenge",
+	"version": "0.0.0",
+	"scripts": {
+		"ng": "ng",
+		"start": "ng serve --open",
+		"dev": "ng serve --open",
+		"build": "ng build",
+		"watch": "ng build --watch --configuration development",
+		"serve": "npx http-server -p 8080 -c-1 dist/angular-challenge",
+		"test": "ng test",
+		"lint": "ng lint"
+	},
+	"private": true,
+	"dependencies": {
+		"@angular/animations": "^16.0.0",
+		"@angular/cdk": "16.0.1",
+		"@angular/common": "^16.0.0",
+		"@angular/compiler": "^16.0.0",
+		"@angular/core": "^16.0.0",
+		"@angular/forms": "^16.0.0",
+		"@angular/material": "16.0.1",
+		"@angular/platform-browser": "^16.0.0",
+		"@angular/platform-browser-dynamic": "^16.0.0",
+		"@angular/router": "^16.0.0",
+		"@angular/service-worker": "^16.0.0",
+		"rxjs": "~7.8.0",
+		"zone.js": "~0.13.0"
+	},
+	"devDependencies": {
+		"@angular-devkit/build-angular": "^16.0.2",
+		"@angular-eslint/builder": "16.0.2",
+		"@angular-eslint/eslint-plugin": "16.0.2",
+		"@angular-eslint/eslint-plugin-template": "16.0.2",
+		"@angular-eslint/schematics": "16.0.2",
+		"@angular-eslint/template-parser": "16.0.2",
+		"@angular/cli": "~16.0.2",
+		"@angular/compiler-cli": "^16.0.0",
+		"@types/jasmine": "~4.3.0",
+		"@typescript-eslint/eslint-plugin": "5.59.2",
+		"@typescript-eslint/parser": "5.59.2",
+		"eslint": "^8.40.0",
+		"eslint-config-prettier": "^8.8.0",
+		"jasmine-core": "~4.6.0",
+		"karma": "~6.4.0",
+		"karma-chrome-launcher": "~3.2.0",
+		"karma-coverage": "~2.2.0",
+		"karma-jasmine": "~5.1.0",
+		"karma-jasmine-html-reporter": "~2.0.0",
+		"prettier": "^2.8.8",
+		"typescript": "~5.0.2"
+	}
+}
