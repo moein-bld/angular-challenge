@@ -1,6 +1,16 @@
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile>1</mat-grid-tile>
-    <mat-grid-tile>2</mat-grid-tile>
-    <mat-grid-tile>3</mat-grid-tile>
-    <mat-grid-tile>4</mat-grid-tile>
-</mat-grid-list>
+<!-- <mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile class="bg-dark">
+    </mat-grid-tile>
+    <mat-grid-tile class="bg-dark-page">
+        2
+    </mat-grid-tile>
+</mat-grid-list> -->
+
+<div class="row flex flex-wrap w-full h-screen">
+    <div class="w-full xl:w-4/12 bg-dark flex justify-center items-center">
+        <mb-login-form></mb-login-form>
+    </div>
+    <div class="w-full xl:w-8/12 hidden xl:flex justify-center items-center bg-dark-page">
+        <img src="assets/login-vector.svg" alt="">
+    </div>
+</div>

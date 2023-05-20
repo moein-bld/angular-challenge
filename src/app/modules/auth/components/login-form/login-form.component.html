@@ -1,0 +1,24 @@
+<mat-card class="login-card p-8">
+	<mat-card-title class="login-card__title">
+		welcome ! 👋
+	</mat-card-title>
+	<mat-card-content>
+		<form [formGroup]="form">
+			<mat-form-field class="w-full login-card__field">
+				<mat-label>Username</mat-label>
+				<input type="text" matInput formControlName="username" name="username" />
+			</mat-form-field>
+
+			<mat-form-field class="w-full">
+				<mat-label>Password</mat-label>
+				<input type="password" matInput formControlName="password" name="password" />
+			</mat-form-field>
+
+			<div class="w-full">
+				<button type="submit" class="bg-green-600 text-white py-2 px-4 rounded-sm w-full">
+					Login
+				</button>
+			</div>
+		</form>
+	</mat-card-content>
+</mat-card>
