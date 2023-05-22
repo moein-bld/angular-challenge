@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 const modules = [
 	// @angular/materials
@@ -21,7 +22,8 @@ const modules = [
 	MatButtonModule,
 	MatTableModule,
 	MatPaginatorModule,
-	MatDialogModule
+	MatDialogModule,
+	MatSelectModule
 ];
 @NgModule({
 	imports: modules,

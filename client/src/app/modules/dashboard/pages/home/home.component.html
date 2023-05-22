@@ -1,11 +1,53 @@
-<div class="bg-dark_page h-screen">
+<div class="bg-dark_page">
 	<div class="w-full lg:w-8/12 mx-auto py-10 h-full">
+		<div class="pb-16" *ngIf="show">
+			<p class="text-white text-xl">{{ type }} user</p>
+
+			<form [formGroup]="userGroupForm" (ngSubmit)="createOrUpdate()">
+				<div *ngFor="let user of usersForm.controls; let i = index" formArrayName="users">
+					<div [formGroupName]="i">
+						<mat-form-field class="w-full lg:w-4/12 px-2">
+							<mat-label>Username</mat-label>
+							<input type="text" matInput formControlName="username" name="username" />
+							<mat-error *ngIf="user.get('username')?.hasError('required')"> username is required </mat-error>
+						</mat-form-field>
+
+						<mat-form-field class="w-full lg:w-4/12 px-2">
+							<mat-label>Email</mat-label>
+							<input type="text" matInput formControlName="email" name="email" />
+							<mat-error *ngIf="user.get('email')?.hasError('required')"> email is required </mat-error>
+							<mat-error *ngIf="user.get('email')?.hasError('email')"> email is invalid </mat-error>
+						</mat-form-field>
+
+						<mat-form-field class="w-full lg:w-4/12 px-2">
+							<mat-label>USer status</mat-label>
+							<mat-select formControlName="status">
+								<mat-option *ngFor="let status of conditions" [value]="status.value">
+									{{ status.viewValue }}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+				</div>
+				<div class="mt-6 flex justify-end w-full">
+					<button class="bg-positive btn-primary" (click)="addRow($event)">Add row</button>
+				</div>
+				<div class="mt-6">
+					<button class="btn-primary w-full">{{ type }}</button>
+				</div>
+			</form>
+		</div>
+
 		<mat-form-field class="w-full">
 			<mat-label>Filter</mat-label>
 			<input matInput (keyup)="applyFilter($event)" #input />
 		</mat-form-field>
 
 		<div class="mat-elevation-z8">
+			<div class="flex justify-end w-full my-4">
+				<button class="btn-primary" (click)="openCreate()">Create</button>
+			</div>
+
 			<table mat-table [dataSource]="dataSource" matSort class="bg-dark">
 				<!-- ID Column -->
 				<ng-container matColumnDef="id">
@@ -50,7 +92,7 @@
 				</tr>
 			</table>
 
-			<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" class="bg-dark"></mat-paginator>
+			<mat-paginator [pageSize]="15" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" class="bg-dark"></mat-paginator>
 		</div>
 	</div>
 </div>
