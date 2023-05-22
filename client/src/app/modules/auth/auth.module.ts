@@ -5,7 +5,7 @@ import { AuthRoutingModule } from './auth-router.module';
 import { UsersPagesModule } from './pages/pages.module';
 
 @NgModule({
-	imports: [CommonModule, SharedModule, AuthRoutingModule, UsersPagesModule],
+	imports: [SharedModule, AuthRoutingModule, UsersPagesModule],
 	declarations: [],
 })
 export class AuthModule {}

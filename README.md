@@ -4,7 +4,7 @@ This project was generated with angular and strapi.
 
 ## Development front end
 
-First cd the folder `cd client`
+First cd the folder client `cd client`
 
 ```sh
 yarn
@@ -16,7 +16,7 @@ yarn dev
 
 ## Development back end
 
-First cd the folder `cd server`
+First cd the folder server `cd server`
 
 ```sh
 yarn

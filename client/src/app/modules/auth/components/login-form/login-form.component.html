@@ -1,23 +1,21 @@
 <mat-card class="login-card p-8">
-	<mat-card-title class="login-card__title">
-		welcome ! 👋
-	</mat-card-title>
+	<mat-card-title class="login-card__title"> welcome ! 👋 </mat-card-title>
 	<mat-card-content>
-		<form [formGroup]="form">
-			<mat-form-field class="w-full login-card__field">
+		<form [formGroup]="form" (ngSubmit)="submit()">
+			<mat-form-field class="w-full">
 				<mat-label>Username</mat-label>
 				<input type="text" matInput formControlName="username" name="username" />
+				<mat-error *ngIf="form.get('username')?.hasError('required')"> username is required </mat-error>
 			</mat-form-field>
 
-			<mat-form-field class="w-full">
+			<mat-form-field class="w-full mt-4">
 				<mat-label>Password</mat-label>
 				<input type="password" matInput formControlName="password" name="password" />
+				<mat-error *ngIf="form.get('password')?.hasError('required')"> password is required </mat-error>
 			</mat-form-field>
 
-			<div class="w-full">
-				<button type="submit" class="btn-primary w-full">
-					Login
-				</button>
+			<div class="w-full mt-6">
+				<button class="btn-primary w-full" [disabled]="!form.valid">Login</button>
 			</div>
 		</form>
 	</mat-card-content>

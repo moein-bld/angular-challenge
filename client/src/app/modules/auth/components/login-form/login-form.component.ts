@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'mb-login-form',
@@ -7,7 +8,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 	styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-	constructor() {
+	constructor(private router: Router) {
 		this.error = '';
 	}
 
@@ -17,9 +18,11 @@ export class LoginFormComponent {
 	});
 
 	submit() {
-		if (this.form.valid) {
-			this.submitEM.emit(this.form.value);
-		}
+		// if (this.form.valid) {
+		// 	this.submitEM.emit(this.form.value);
+		// }
+		console.log('login');
+		this.router.navigate(['/forgot-password'])
 	}
 	@Input() error: string | null;
 

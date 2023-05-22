@@ -8,6 +8,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { AuthModule } from './modules/auth/auth.module';
 			registrationStrategy: 'registerWhenStable:30000',
 		}),
 		AuthModule,
+		DashboardModule,
 		SharedModule,
 	],
 	providers: [],
