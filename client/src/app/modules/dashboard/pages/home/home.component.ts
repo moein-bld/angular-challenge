@@ -71,9 +71,13 @@ export class HomeComponent implements AfterViewInit {
 		this.dataSource.sort = this.sort;
 	}
 
-	applyFilter(event: Event) {
+	applyFilter(event: Event, value?: 'User' | 'Admin' | '') {
 		const filterValue = (event.target as HTMLInputElement).value;
-		this.dataSource.filter = filterValue.trim().toLowerCase();
+		
+		// value = ''
+		console.log((value == undefined) ? filterValue.trim().toLowerCase() : value.trim().toLowerCase());
+		
+		this.dataSource.filter = (value == undefined) ? filterValue.trim().toLowerCase() : value.trim().toLowerCase();
 
 		if (this.dataSource.paginator) {
 			this.dataSource.paginator.firstPage();
@@ -83,7 +87,7 @@ export class HomeComponent implements AfterViewInit {
 	openCreate() {
 		this.type = 'create';
 		this.show = true;
-		this.resetItems()
+		this.resetItems();
 	}
 
 	openEdit(row: UserData) {
@@ -152,5 +156,10 @@ export class HomeComponent implements AfterViewInit {
 				this.resetItems();
 			}
 		}
+	}
+
+	deleteRow(row: UserData) {
+		this.dataSource.data = this.dataSource.data.filter(item => item.id !== row.id)
+		this.dataSource._updateChangeSubscription();
 	}
 }
