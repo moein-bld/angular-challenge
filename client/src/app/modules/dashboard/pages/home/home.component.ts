@@ -71,17 +71,34 @@ export class HomeComponent implements AfterViewInit {
 		this.dataSource.sort = this.sort;
 	}
 
-	applyFilter(event: Event, value?: 'User' | 'Admin' | '') {
-		const filterValue = (event.target as HTMLInputElement).value;
+	applyFilter(value: string) {
 		
-		// value = ''
-		console.log((value == undefined) ? filterValue.trim().toLowerCase() : value.trim().toLowerCase());
-		
-		this.dataSource.filter = (value == undefined) ? filterValue.trim().toLowerCase() : value.trim().toLowerCase();
+		this.dataSource.filter = value.trim().toLowerCase();
 
 		if (this.dataSource.paginator) {
 			this.dataSource.paginator.firstPage();
 		}
+	}
+
+	filterWithEmail(event: Event) {
+		const filterValue = (event.target as HTMLInputElement).value;
+		this.applyFilter(filterValue)
+	}
+
+	filterWithRole(value: 'User' | 'Admin' | '') {
+		this.applyFilter(value)
+	}
+
+	filterWithDatePicker(event: any) {
+		let date = new Date((event.target as HTMLInputElement).value).toLocaleDateString()
+		this.applyFilter(date)
+	}
+
+	goToTop() {
+		window.scroll({
+			top: 0,
+			behavior: 'smooth'
+		})
 	}
 
 	openCreate() {
@@ -99,11 +116,17 @@ export class HomeComponent implements AfterViewInit {
 		this.type = 'edit';
 		this.show = true;
 		this.usersForm.push(this.createForm(row));
+
+		this.goToTop()
 	}
 
 	addRow(event: Event) {
 		event.preventDefault();
 		if (this.usersForm.length < 20) this.usersForm.push(this.createForm());
+	}
+
+	deleteRowInForm(i: number) {
+		this.usersForm.removeAt(i)
 	}
 
 	createForm(row?: UserData): FormGroup {
@@ -148,6 +171,8 @@ export class HomeComponent implements AfterViewInit {
 				this.dataSource.data = final;
 
 				this.dataSource._updateChangeSubscription();
+
+				this.resetItems()
 			} else if (type === 'create') {
 				this.usersForm.value.forEach((item: UserData) => {
 					this.dataSource.data.push(item);

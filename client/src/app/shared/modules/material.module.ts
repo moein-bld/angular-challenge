@@ -11,6 +11,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker'
 
 const modules = [
 	// @angular/materials
@@ -23,7 +25,9 @@ const modules = [
 	MatTableModule,
 	MatPaginatorModule,
 	MatDialogModule,
-	MatSelectModule
+	MatSelectModule,
+	MatNativeDateModule,
+	MatDatepickerModule
 ];
 @NgModule({
 	imports: modules,

@@ -22,26 +22,22 @@
 						<mat-form-field class="w-full lg:w-3/12 px-2">
 							<mat-label>User status</mat-label>
 							<mat-select formControlName="status">
-								<mat-option [value]="true">
-									Active
-								</mat-option>
-								<mat-option [value]="false">
-									Inactive
-								</mat-option>
+								<mat-option [value]="true"> Active </mat-option>
+								<mat-option [value]="false"> Inactive </mat-option>
 							</mat-select>
 						</mat-form-field>
 
 						<mat-form-field class="w-full lg:w-3/12 px-2">
 							<mat-label>User role</mat-label>
 							<mat-select formControlName="role">
-								<mat-option value="User">
-									User
-								</mat-option>
-								<mat-option value="Admin">
-									Admin
-								</mat-option>
+								<mat-option value="User"> User </mat-option>
+								<mat-option value="Admin"> Admin </mat-option>
 							</mat-select>
 						</mat-form-field>
+
+						<div class="w-full flex justify-end">
+							<button class="bg-negative btn-primary" (click)="deleteRowInForm(i)">Delete row</button>
+						</div>
 					</div>
 				</div>
 				<div class="mt-6 flex justify-end w-full" *ngIf="type != 'edit'">
@@ -53,26 +49,34 @@
 			</form>
 		</div>
 
-		<mat-form-field class="w-full lg:w-1/2 px-2">
-			<mat-label>Filter email	</mat-label>
-			<input matInput (keyup)="applyFilter($event)" #input />
+		<mat-form-field class="w-full lg:w-4/12 px-2">
+			<mat-label>Filter email </mat-label>
+			<input matInput (keyup)="filterWithEmail($event)" #input />
 		</mat-form-field>
 
-		<mat-form-field class="w-full lg:w-1/2 px-2">
+		<mat-form-field class="w-full lg:w-4/12 px-2">
 			<mat-label>Filter</mat-label>
 			<mat-select>
-				<mat-option value="User" (click)="applyFilter($event , 'User')">
-					User
-				</mat-option>
-				<mat-option value="Admin" (click)="applyFilter($event , 'Admin')">
-					Admin
-				</mat-option>
+				<mat-option value="User" (click)="filterWithRole('User')"> User </mat-option>
+				<mat-option value="Admin" (click)="filterWithRole('Admin')"> Admin </mat-option>
 			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field class="w-full lg:w-4/12 px-2">
+			<mat-label>Choose a date</mat-label>
+			<input matInput [matDatepicker]="datepicker" (dateChange)="filterWithDatePicker($event)" />
+			<mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+			<mat-datepicker #datepicker>
+				<mat-datepicker-actions>
+					<button mat-button matDatepickerCancel>Cancel</button>
+					<button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+				</mat-datepicker-actions>
+			</mat-datepicker>
 		</mat-form-field>
 
 		<div class="mat-elevation-z8">
 			<div class="flex justify-end w-full my-4">
-				<button class="btn-primary mx-2" (click)="applyFilter($event , '')">Remove Filter</button>
+				<button class="btn-primary mx-2" (click)="applyFilter('')">Remove Filter</button>
 				<button class="btn-primary mx-2" (click)="openCreate()">Create</button>
 			</div>
 
